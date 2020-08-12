@@ -1,3 +1,6 @@
+import winsound
+import time
+
 char_to_dots = {
   'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
   'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
@@ -29,6 +32,13 @@ def decode(x):
     for i in range(len(x)):
         y.append(dots_to_char[x[i]])
     print(''.join(y))
+    x = ''.join(x)
+    for i in range(len(x)):
+        if x[i] == '.':
+            winsound.Beep(200, 400)
+        elif x[i] == '-':
+            winsound.Beep(600, 400)
+        time.sleep(0.5)
 
 while True:
     z = input('Encode or decode morse? (E/D)\n')
